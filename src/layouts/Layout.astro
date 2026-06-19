@@ -417,9 +417,8 @@ import Footer from "../components/Footer.astro";
       padding: 56px 0;
     }
 
-    .grid-2,
     .grid-3 {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .grid-4 {
@@ -428,6 +427,13 @@ import Footer from "../components/Footer.astro";
 
     .section-header {
       margin-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
     }
   }
 

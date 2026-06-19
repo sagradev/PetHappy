@@ -457,12 +457,18 @@ const pricingTable = [
 
   @media (max-width: 768px) {
     .diferenciais-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .pricing-table th,
     .pricing-table td {
       padding: 12px 16px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .diferenciais-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
