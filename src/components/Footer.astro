@@ -1,0 +1,340 @@
+---
+const currentYear = new Date().getFullYear();
+
+const services = [
+  { href: "/servicos#banho-tosa", label: "Banho e Tosa" },
+  { href: "/servicos#banho-simples", label: "Banho Simples" },
+  { href: "/servicos#veterinario", label: "Consulta Veterinária" },
+  { href: "/servicos#hotel-pet", label: "Hotel Pet" },
+  { href: "/servicos#adestramento", label: "Adestramento" },
+  { href: "/servicos#tosa-higienica", label: "Tosa Higiênica" },
+];
+
+const quickLinks = [
+  { href: "/", label: "Início" },
+  { href: "/sobre", label: "Sobre Nós" },
+  { href: "/servicos", label: "Serviços" },
+  { href: "/contato", label: "Contato" },
+  { href: "/agendamento", label: "Agendar" },
+];
+
+const socials = [
+  { href: "#", icon: "ph-instagram-logo", label: "Instagram" },
+  { href: "#", icon: "ph-facebook-logo", label: "Facebook" },
+  { href: "https://wa.me/5567999998888", icon: "ph-whatsapp-logo", label: "WhatsApp" },
+  { href: "#", icon: "ph-tiktok-logo", label: "TikTok" },
+];
+---
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <span class="logo-icon">
+            <i class="ph-fill ph-paw-print"></i>
+          </span>
+          <span class="logo-text">Pet<span class="logo-accent">Happy</span></span>
+        </a>
+        <p class="footer-desc">
+          Cuidando do seu melhor amigo com amor, carinho e profissionalismo desde 2015. Em Campo Grande, MS.
+        </p>
+        <div class="footer-socials">
+          {socials.map((s) => (
+            <a href={s.href} class="social-link" aria-label={s.label} target="_blank" rel="noopener">
+              <i class={`ph-fill ${s.icon}`}></i>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Serviços</h4>
+        <ul class="footer-links">
+          {services.map((s) => (
+            <li>
+              <a href={s.href} class="footer-link">
+                <i class="ph ph-caret-right"></i>
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Links Rápidos</h4>
+        <ul class="footer-links">
+          {quickLinks.map((l) => (
+            <li>
+              <a href={l.href} class="footer-link">
+                <i class="ph ph-caret-right"></i>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Contato</h4>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i class="ph-fill ph-map-pin"></i>
+            <span>Rua das Flores, 123<br />Jardim dos Estados<br />Campo Grande, MS</span>
+          </li>
+          <li class="footer-contact-item">
+            <i class="ph-fill ph-phone"></i>
+            <a href="tel:6733334444">(67) 3333-4444</a>
+          </li>
+          <li class="footer-contact-item">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+            <a href="https://wa.me/5567999998888" target="_blank">(67) 99999-8888</a>
+          </li>
+          <li class="footer-contact-item">
+            <i class="ph-fill ph-envelope"></i>
+            <a href="mailto:contato@pethappy.com.br">contato@pethappy.com.br</a>
+          </li>
+        </ul>
+
+        <div class="footer-hours">
+          <h5>Horário de Atendimento</h5>
+          <p><span>Seg – Sex:</span> 08h às 18h</p>
+          <p><span>Sábado:</span> 08h às 14h</p>
+          <p><span>Domingo:</span> Fechado</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; {currentYear} PetHappy. Todos os direitos reservados.</p>
+      <p class="footer-made">
+        Feito com <i class="ph-fill ph-heart" style="color: var(--primary);"></i> para os animais de Campo Grande
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--dark);
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: auto;
+  }
+
+  .footer-top {
+    padding: 72px 0 48px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+    gap: 48px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: white;
+  }
+
+  .logo-accent {
+    color: var(--primary);
+  }
+
+  .footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition:
+      background var(--transition),
+      color var(--transition),
+      transform var(--transition);
+  }
+
+  .social-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .footer-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    transition: color var(--transition);
+    text-decoration: none;
+  }
+
+  .footer-link i {
+    font-size: 0.75rem;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .footer-link:hover {
+    color: white;
+  }
+
+  .footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .footer-contact-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .footer-contact-item i {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .footer-contact-item a {
+    color: rgba(255, 255, 255, 0.65);
+    transition: color var(--transition);
+  }
+
+  .footer-contact-item a:hover {
+    color: white;
+  }
+
+  .footer-hours {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+  }
+
+  .footer-hours h5 {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .footer-hours p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+  }
+
+  .footer-hours p span {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer-made {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      grid-column: auto;
+    }
+
+    .footer-bottom-inner {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>

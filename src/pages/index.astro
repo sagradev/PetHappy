@@ -1,0 +1,691 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+
+const services = [
+  {
+    image: "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=800&q=80",
+    imageAlt: "Cachorro sendo banhado por profissional",
+    titulo: "Banho e Tosa",
+    descricao: "Deixamos seu pet limpo, perfumado e com a tosa perfeita para cada raça. Usamos produtos premium e hipoalergênicos.",
+    preco: "R$ 50",
+    link: "/agendamento",
+    tag: "Mais popular",
+    icon: "ph-shower",
+    id: "banho-tosa",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=800&q=80",
+    imageAlt: "Veterinário examinando cachorro",
+    titulo: "Consulta Veterinária",
+    descricao: "Equipe veterinária especializada para cuidar da saúde do seu pet. Consultas, vacinas e exames preventivos.",
+    preco: "R$ 120",
+    link: "/agendamento",
+    icon: "ph-stethoscope",
+    id: "veterinario",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=800&q=80",
+    imageAlt: "Cachorros confortáveis no hotel pet",
+    titulo: "Hotel Pet",
+    descricao: "Seu pet merece conforto quando você viaja. Acomodações aconchegantes, alimentação especial e muito carinho.",
+    preco: "R$ 80",
+    link: "/agendamento",
+    icon: "ph-house-heart",
+    id: "hotel-pet",
+  },
+];
+
+const features = [
+  {
+    icon: "ph-medal",
+    titulo: "Profissionais Experientes",
+    descricao: "Nossa equipe tem mais de 8 anos de experiência no cuidado animal.",
+  },
+  {
+    icon: "ph-sparkle",
+    titulo: "Produtos Premium",
+    descricao: "Usamos apenas produtos hipoalergênicos e de alta qualidade.",
+  },
+  {
+    icon: "ph-shield-check",
+    titulo: "Ambiente Seguro",
+    descricao: "Espaço projetado para o conforto e segurança dos animais.",
+  },
+  {
+    icon: "ph-heart",
+    titulo: "Amor pelos Animais",
+    descricao: "Cada pet é tratado com o mesmo carinho que você dá em casa.",
+  },
+];
+
+const testimonials = [
+  {
+    avatar: "https://i.pravatar.cc/80?img=1",
+    nome: "Ana Carolina Silva",
+    pet: "Tutora da Mel (Golden Retriever)",
+    texto: "Simplesmente o melhor pet shop de Campo Grande! A Mel fica animada toda vez que chegamos. A equipe é super atenciosa e o resultado do banho é incrível. Recomendo de olhos fechados!",
+    nota: 5,
+  },
+  {
+    avatar: "https://i.pravatar.cc/80?img=3",
+    nome: "Roberto Mendes",
+    pet: "Tutor do Thor (Bulldog Francês)",
+    texto: "Deixei meu Thor no hotel por 5 dias e fiquei surpreso com o cuidado. Me mandavam fotos todo dia, ele estava super feliz. Voltarei sempre que precisar viajar!",
+    nota: 5,
+  },
+  {
+    avatar: "https://i.pravatar.cc/80?img=5",
+    nome: "Patrícia Duarte",
+    pet: "Tutora da Nina (Persa)",
+    texto: "A consulta veterinária foi excelente. A doutora foi muito cuidadosa com minha Nina e explicou tudo detalhadamente. Saímos com diagnóstico e tratamento muito bem explicados.",
+    nota: 5,
+  },
+];
+
+const stats = [
+  { valor: "500+", label: "Pets atendidos/mês" },
+  { valor: "8+", label: "Anos de experiência" },
+  { valor: "4.9", label: "Nota média" },
+  { valor: "100%", label: "Clientes satisfeitos" },
+];
+---
+
+<Layout title="PetHappy — Pet Shop & Banho e Tosa em Campo Grande, MS">
+  <section class="hero">
+    <div class="hero-shape"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="badge">
+          <i class="ph-fill ph-paw-print"></i>
+          Campo Grande, MS
+        </div>
+        <h1 class="hero-title">
+          Seu Pet <br />
+          <span class="text-primary">Merece</span> o Melhor
+        </h1>
+        <p class="hero-subtitle">
+          No PetHappy, cada animal recebe amor, cuidado e atenção profissional.
+          Banho, tosa, veterinário, hotel e muito mais — tudo em um só lugar.
+        </p>
+        <div class="hero-actions">
+          <a href="/agendamento" class="btn btn-primary btn-lg">
+            <i class="ph ph-calendar-plus"></i>
+            Agendar Agora
+          </a>
+          <a href="/servicos" class="btn btn-secondary btn-lg">
+            Ver Serviços
+            <i class="ph ph-arrow-right"></i>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <img src="https://i.pravatar.cc/40?img=10" alt="Cliente" />
+            <img src="https://i.pravatar.cc/40?img=11" alt="Cliente" />
+            <img src="https://i.pravatar.cc/40?img=12" alt="Cliente" />
+            <img src="https://i.pravatar.cc/40?img=13" alt="Cliente" />
+          </div>
+          <div class="trust-text">
+            <div class="trust-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span>+500 tutores felizes em Campo Grande</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80"
+            alt="Cachorro feliz após banho no PetHappy"
+            class="hero-img"
+            loading="eager"
+          />
+          <div class="hero-badge-float hero-badge-1">
+            <i class="ph-fill ph-star"></i>
+            <div>
+              <strong>4.9</strong>
+              <span>Avaliação</span>
+            </div>
+          </div>
+          <div class="hero-badge-float hero-badge-2">
+            <i class="ph-fill ph-paw-print"></i>
+            <div>
+              <strong>500+</strong>
+              <span>Pets/mês</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="container">
+        <div class="stats-grid">
+          {stats.map((s) => (
+            <div class="stat-item">
+              <span class="stat-value">{s.valor}</span>
+              <span class="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 28C840 36 960 42 1080 38C1200 34 1320 20 1380 13L1440 6V60H1380C1320 60 1200 60 1080 60C960 60 840 60 720 60C600 60 480 60 360 60C240 60 120 60 60 60H0Z" fill="#F8F9FA"/>
+    </svg>
+  </div>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-star"></i> Nossos Diferenciais</div>
+        <h2 class="section-title fade-in">Por que escolher a <span class="text-primary">PetHappy</span>?</h2>
+        <p class="section-subtitle fade-in">
+          Mais de 8 anos cuidando dos pets de Campo Grande com profissionalismo e muito amor.
+        </p>
+      </div>
+      <div class="grid-4">
+        {features.map((f) => (
+          <div class="feature-card fade-in">
+            <div class="feature-icon">
+              <i class={`ph-fill ${f.icon}`}></i>
+            </div>
+            <h3 class="feature-title">{f.titulo}</h3>
+            <p class="feature-desc">{f.descricao}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="wave wave-flip">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 0L60 10C120 20 240 40 360 45C480 50 600 40 720 32C840 24 960 18 1080 22C1200 26 1320 40 1380 47L1440 54V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="#F8F9FA"/>
+    </svg>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-scissors"></i> O que oferecemos</div>
+        <h2 class="section-title fade-in">Nossos <span class="text-primary">Serviços</span></h2>
+        <p class="section-subtitle fade-in">
+          Do banho à consulta veterinária, temos tudo que seu pet precisa para ser feliz e saudável.
+        </p>
+      </div>
+      <div class="grid-3">
+        {services.map((s) => (
+          <ServiceCard {...s} />
+        ))}
+      </div>
+      <div class="services-cta fade-in">
+        <a href="/servicos" class="btn btn-secondary btn-lg">
+          Ver todos os serviços
+          <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo-section">
+    <div class="container promo-inner">
+      <div class="promo-content fade-in">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+          <i class="ph-fill ph-gift"></i> Oferta Especial
+        </span>
+        <h2 class="promo-title">Primeiro Banho com <span>50% OFF</span></h2>
+        <p class="promo-desc">Traga seu pet pela primeira vez e ganhe 50% de desconto no banho simples. Válido para novos clientes.</p>
+        <a href="/agendamento" class="btn btn-white btn-lg">
+          Aproveitar oferta
+          <i class="ph ph-arrow-right"></i>
+        </a>
+      </div>
+      <div class="promo-image fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+          alt="Cachorro feliz"
+          class="promo-img"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-heart"></i> Depoimentos</div>
+        <h2 class="section-title fade-in">O que nossos <span class="text-primary">clientes</span> dizem</h2>
+        <p class="section-subtitle fade-in">
+          Mais de 500 famílias confiam no PetHappy para cuidar do seu bem mais precioso.
+        </p>
+      </div>
+      <div class="grid-3">
+        {testimonials.map((t) => (
+          <TestimonialCard {...t} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div class="cta-content">
+        <div class="cta-icon">
+          <i class="ph-fill ph-paw-print"></i>
+        </div>
+        <h2 class="cta-title">Pronto para mimar seu pet?</h2>
+        <p class="cta-desc">
+          Agende agora e garanta o melhor cuidado para o seu companheiro.
+          Atendemos em Campo Grande, MS.
+        </p>
+        <div class="cta-actions">
+          <a href="/agendamento" class="btn btn-white btn-lg">
+            <i class="ph ph-calendar-plus"></i>
+            Agendar Online
+          </a>
+          <a href="https://wa.me/5567999998888?text=Olá! Gostaria de agendar um serviço para meu pet." target="_blank" class="btn btn-lg" style="background: #25d366; color: white; box-shadow: 0 8px 24px rgba(37,211,102,0.35);">
+            <i class="ph-fill ph-whatsapp-logo"></i>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #fff8f8 0%, #fff 50%, #f0fffe 100%);
+    padding-top: 56px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-shape {
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 60vw;
+    height: 80vh;
+    background: radial-gradient(circle, rgba(255,107,107,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding-bottom: 64px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .trust-avatars {
+    display: flex;
+  }
+
+  .trust-avatars img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: -10px;
+    object-fit: cover;
+  }
+
+  .trust-text {
+    font-size: 0.85rem;
+    color: var(--gray);
+    padding-left: 10px;
+  }
+
+  .trust-stars {
+    color: #f59e0b;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .hero-img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .hero-badge-float {
+    position: absolute;
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .hero-badge-float i {
+    font-size: 1.6rem;
+    color: var(--primary);
+  }
+
+  .hero-badge-float strong {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .hero-badge-float span {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  .hero-badge-1 {
+    top: -20px;
+    left: -20px;
+  }
+
+  .hero-badge-2 {
+    bottom: 24px;
+    right: -16px;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-stats {
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: 32px 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.04);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 1px;
+    background: var(--gray-light);
+  }
+
+  .stat-value {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+
+  .wave-flip {
+    transform: scaleY(-1);
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--primary-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin: 0 auto 20px;
+  }
+
+  .feature-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .services-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .promo-section {
+    background: linear-gradient(135deg, var(--primary) 0%, #e84393 100%);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .promo-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .promo-content {
+    color: white;
+  }
+
+  .promo-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    color: white;
+    margin: 16px 0 16px;
+    line-height: 1.1;
+  }
+
+  .promo-title span {
+    color: var(--accent);
+  }
+
+  .promo-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .promo-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .promo-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    object-fit: cover;
+    aspect-ratio: 1;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a2a3a 100%);
+    padding: 80px 0;
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,107,107,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin: 0 auto 24px;
+  }
+
+  .cta-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .cta-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-image {
+      order: -1;
+    }
+
+    .hero-img-wrap {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .promo-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .promo-image {
+      order: -1;
+    }
+
+    .promo-img {
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat-item::after {
+      display: none;
+    }
+
+    .hero-badge-float {
+      display: none;
+    }
+  }
+</style>

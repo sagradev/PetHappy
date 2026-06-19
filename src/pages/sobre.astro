@@ -1,0 +1,684 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const stats = [
+  { valor: "500+", label: "Pets atendidos por mês", icon: "ph-paw-print" },
+  { valor: "8+", label: "Anos de experiência", icon: "ph-calendar-check" },
+  { valor: "4.9", label: "Nota média no Google", icon: "ph-star" },
+  { valor: "3", label: "Profissionais especializados", icon: "ph-users-three" },
+];
+
+const team = [
+  {
+    img: "https://images.unsplash.com/photo-1581888227599-779811939961?w=400&q=80",
+    nome: "Dra. Camila Torres",
+    cargo: "Médica Veterinária",
+    desc: "CRMV-MS 3421. 8 anos de experiência em clínica geral e pequenos animais.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1594839022645-4eeef7ee8da2?w=400&q=80",
+    nome: "Lucas Ferreira",
+    cargo: "Tosador Especialista",
+    desc: "Certificado pela Academia Pet Brasil. Especialista em tosas de raça e artística.",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1532635241-17e820acc59f?w=400&q=80",
+    nome: "Juliana Matos",
+    cargo: "Banhista & Cuidadora",
+    desc: "5 anos de experiência. Especializada em trato com animais ansiosos e gatos.",
+  },
+];
+
+const valores = [
+  {
+    icon: "ph-heart",
+    titulo: "Amor Animal",
+    desc: "Todo animal merece ser tratado com respeito, carinho e dedicação.",
+    color: "var(--primary)",
+    bg: "var(--primary-light)",
+  },
+  {
+    icon: "ph-medal",
+    titulo: "Excelência",
+    desc: "Buscamos sempre o melhor resultado em cada serviço prestado.",
+    color: "var(--secondary-dark)",
+    bg: "var(--secondary-light)",
+  },
+  {
+    icon: "ph-handshake",
+    titulo: "Confiança",
+    desc: "Construímos relações duradouras com tutores e seus pets.",
+    color: "#7c3aed",
+    bg: "#f3e8ff",
+  },
+  {
+    icon: "ph-leaf",
+    titulo: "Responsabilidade",
+    desc: "Comprometidos com práticas sustentáveis e bem-estar animal.",
+    color: "#059669",
+    bg: "#ecfdf5",
+  },
+];
+
+const timeline = [
+  { ano: "2015", titulo: "Fundação", desc: "A PetHappy abre suas portas no Jardim dos Estados com apenas 2 colaboradores e muita vontade de fazer a diferença." },
+  { ano: "2017", titulo: "Primeiro Prêmio", desc: "Vencemos o prêmio 'Melhor Pet Shop de Campo Grande' na votação popular do Correio do Estado." },
+  { ano: "2019", titulo: "Expansão", desc: "Ampliamos o espaço e inauguramos o Hotel Pet com capacidade para 20 animais simultaneamente." },
+  { ano: "2021", titulo: "Serviço Veterinário", desc: "Contratamos a Dra. Camila Torres e inauguramos a clínica veterinária com atendimento completo." },
+  { ano: "2023", titulo: "Leva e Traz", desc: "Lançamos o serviço de busca e entrega em Campo Grande, facilitando a vida dos tutores." },
+  { ano: "2025", titulo: "Hoje", desc: "Atendemos mais de 500 pets por mês, com time de 3 profissionais e nota 4.9 no Google." },
+];
+---
+
+<Layout
+  title="Sobre Nós — PetHappy Campo Grande"
+  description="Conheça a história da PetHappy, o pet shop mais amado de Campo Grande, MS. Desde 2015 cuidando dos animais com amor e profissionalismo."
+>
+  <section class="page-hero sobre-hero">
+    <div class="container page-hero-inner">
+      <div class="breadcrumb fade-in">
+        <a href="/">Início</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Sobre Nós</span>
+      </div>
+      <h1 class="page-hero-title fade-in">
+        Nossa <span>História</span>
+      </h1>
+      <p class="page-hero-subtitle fade-in">
+        Desde 2015, somos apaixonados por animais e dedicados a oferecer o melhor
+        cuidado para os pets de Campo Grande, MS.
+      </p>
+    </div>
+    <div class="page-hero-wave">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 80L80 68C160 56 320 32 480 24C640 16 800 24 960 32C1120 40 1280 48 1360 52L1440 56V80H1360C1280 80 1120 80 960 80C800 80 640 80 480 80C320 80 160 80 80 80H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sobre-story">
+        <div class="story-image fade-in">
+          <img
+            src="https://images.unsplash.com/photo-1581888227599-779811939961?w=700&q=80"
+            alt="Equipe PetHappy com animais"
+            class="story-img"
+          />
+          <div class="story-badge">
+            <i class="ph-fill ph-paw-print"></i>
+            <div>
+              <strong>Desde 2015</strong>
+              <span>Em Campo Grande</span>
+            </div>
+          </div>
+        </div>
+        <div class="story-content fade-in">
+          <div class="badge"><i class="ph-fill ph-book-open"></i> Nossa História</div>
+          <h2 class="section-title">
+            Uma história de amor pelos <span class="text-primary">animais</span>
+          </h2>
+          <p>
+            A PetHappy nasceu em 2015 de um sonho compartilhado por quem ama animais. Fundada pela família Santos no coração do Jardim dos Estados, começamos com um pequeno espaço de banho e tosa, dois colaboradores e um propósito claro: oferecer o melhor cuidado para os pets de Campo Grande.
+          </p>
+          <p style="margin-top: 14px;">
+            Ao longo de 8 anos, crescemos junto com a confiança dos nossos clientes. Expandimos nossa estrutura, montamos uma equipe de profissionais certificados e inauguramos serviços como hotel pet, adestramento e atendimento veterinário completo.
+          </p>
+          <p style="margin-top: 14px;">
+            Hoje, atendemos mais de 500 pets por mês, com nota 4.9 no Google e dezenas de famílias que nos confiam seu bem mais precioso. Cada animal que passa pela PetHappy é tratado como se fosse nosso próprio pet.
+          </p>
+          <div class="story-actions">
+            <a href="/agendamento" class="btn btn-primary">
+              <i class="ph ph-calendar-plus"></i>
+              Agendar agora
+            </a>
+            <a href="/contato" class="btn btn-secondary">
+              Fale conosco
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-cards">
+        {stats.map((s) => (
+          <div class="stat-card fade-in">
+            <div class="stat-card-icon">
+              <i class={`ph-fill ${s.icon}`}></i>
+            </div>
+            <div class="stat-card-valor">{s.valor}</div>
+            <div class="stat-card-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-clock-countdown"></i> Nossa Trajetória</div>
+        <h2 class="section-title fade-in">Linha do <span class="text-primary">Tempo</span></h2>
+      </div>
+      <div class="timeline">
+        {timeline.map((item, i) => (
+          <div class={`timeline-item fade-in ${i % 2 === 0 ? "left" : "right"}`}>
+            <div class="timeline-content">
+              <span class="timeline-year">{item.ano}</span>
+              <h3 class="timeline-title">{item.titulo}</h3>
+              <p class="timeline-desc">{item.desc}</p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-users-three"></i> Nossa Equipe</div>
+        <h2 class="section-title fade-in">Conheça quem cuida do <span class="text-primary">seu pet</span></h2>
+        <p class="section-subtitle fade-in">
+          Profissionais apaixonados, certificados e com anos de experiência no cuidado animal.
+        </p>
+      </div>
+      <div class="grid-3">
+        {team.map((m) => (
+          <div class="team-card fade-in">
+            <div class="team-img-wrap">
+              <img src={m.img} alt={m.nome} class="team-img" loading="lazy" />
+            </div>
+            <div class="team-body">
+              <h3 class="team-name">{m.nome}</h3>
+              <span class="team-cargo">{m.cargo}</span>
+              <p class="team-desc">{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge fade-in"><i class="ph-fill ph-compass"></i> Quem Somos</div>
+        <h2 class="section-title fade-in">Missão, Visão e <span class="text-primary">Valores</span></h2>
+      </div>
+
+      <div class="mvv-grid">
+        <div class="mvv-card mvv-missao fade-in">
+          <div class="mvv-icon"><i class="ph-fill ph-target"></i></div>
+          <h3>Missão</h3>
+          <p>Proporcionar cuidado profissional, afetivo e de qualidade para os animais de Campo Grande, tornando a vida dos tutores mais tranquila e a dos pets mais feliz.</p>
+        </div>
+        <div class="mvv-card mvv-visao fade-in">
+          <div class="mvv-icon"><i class="ph-fill ph-eye"></i></div>
+          <h3>Visão</h3>
+          <p>Ser referência em bem-estar animal em Mato Grosso do Sul, reconhecidos pela excelência no atendimento e pela confiança que as famílias depositam em nós.</p>
+        </div>
+      </div>
+
+      <div class="valores-grid">
+        {valores.map((v) => (
+          <div class="valor-card fade-in" style={`--valor-color: ${v.color}; --valor-bg: ${v.bg};`}>
+            <div class="valor-icon">
+              <i class={`ph-fill ${v.icon}`}></i>
+            </div>
+            <h4 class="valor-title">{v.titulo}</h4>
+            <p class="valor-desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sobre-hero {
+    background: linear-gradient(135deg, var(--secondary) 0%, #2196a8 100%);
+  }
+
+  .page-hero {
+    padding: 80px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .page-hero-inner {
+    text-align: center;
+    padding-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+  }
+
+  .breadcrumb a {
+    color: rgba(255,255,255,0.75);
+  }
+
+  .page-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .page-hero-title span {
+    color: var(--accent);
+  }
+
+  .page-hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .page-hero-wave {
+    line-height: 0;
+    margin-bottom: -2px;
+  }
+
+  .sobre-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .story-image {
+    position: relative;
+  }
+
+  .story-img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+
+  .story-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-heading);
+  }
+
+  .story-badge i {
+    font-size: 1.8rem;
+    color: var(--primary);
+  }
+
+  .story-badge strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--dark);
+  }
+
+  .story-badge span {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  .story-content p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  .story-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stats-section {
+    background: var(--primary);
+    padding: 56px 0;
+  }
+
+  .stats-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-card-icon {
+    font-size: 2rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+  }
+
+  .stat-card-valor {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+
+  .stat-card-label {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--gray-light);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 32px);
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .timeline-item.right {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 32px);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 16px;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--primary-light);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .timeline-content {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-md);
+    max-width: 280px;
+  }
+
+  .timeline-year {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .team-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: white;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .team-img-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .team-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .team-card:hover .team-img {
+    transform: scale(1.04);
+  }
+
+  .team-body {
+    padding: 24px;
+  }
+
+  .team-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .team-cargo {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 3px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .team-desc {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .mvv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .mvv-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 36px;
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid;
+  }
+
+  .mvv-missao { border-color: var(--primary); }
+  .mvv-visao { border-color: var(--secondary); }
+
+  .mvv-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+
+  .mvv-visao .mvv-icon {
+    background: var(--secondary-light);
+    color: var(--secondary-dark);
+  }
+
+  .mvv-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .mvv-card p {
+    font-size: 0.92rem;
+    color: var(--gray);
+    line-height: 1.75;
+  }
+
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .valor-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition);
+  }
+
+  .valor-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .valor-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--valor-bg);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--valor-color);
+    font-size: 1.6rem;
+    margin: 0 auto 16px;
+  }
+
+  .valor-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .valor-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .sobre-story {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .story-badge {
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .stats-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .mvv-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .valores-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .timeline::before {
+      left: 16px;
+    }
+
+    .timeline-item,
+    .timeline-item.right {
+      padding-right: 0;
+      padding-left: 52px;
+      justify-content: flex-start;
+    }
+
+    .timeline-dot {
+      left: 16px;
+    }
+
+    .timeline-content {
+      max-width: 100%;
+    }
+
+    .valores-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

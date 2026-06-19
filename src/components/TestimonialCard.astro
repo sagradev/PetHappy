@@ -1,0 +1,110 @@
+---
+interface Props {
+  avatar: string;
+  nome: string;
+  texto: string;
+  nota: number;
+  pet?: string;
+}
+
+const { avatar, nome, texto, nota, pet } = Astro.props;
+---
+
+<article class="testimonial-card fade-in">
+  <div class="testimonial-header">
+    <img src={avatar} alt={`Foto de ${nome}`} class="testimonial-avatar" loading="lazy" />
+    <div class="testimonial-info">
+      <h4 class="testimonial-name">{nome}</h4>
+      {pet && <p class="testimonial-pet"><i class="ph-fill ph-paw-print"></i> {pet}</p>}
+      <div class="stars" role="img" aria-label={`${nota} de 5 estrelas`}>
+        {Array.from({ length: nota }, (_, i) => (
+          <i class="ph-fill ph-star"></i>
+        ))}
+        {Array.from({ length: 5 - nota }, (_, i) => (
+          <i class="ph ph-star"></i>
+        ))}
+      </div>
+    </div>
+    <div class="quote-icon">
+      <i class="ph-fill ph-quotes"></i>
+    </div>
+  </div>
+  <p class="testimonial-text">{texto}</p>
+</article>
+
+<style>
+  .testimonial-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition:
+      transform var(--transition),
+      box-shadow var(--transition);
+    position: relative;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .testimonial-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .testimonial-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-light);
+    flex-shrink: 0;
+  }
+
+  .testimonial-info {
+    flex: 1;
+  }
+
+  .testimonial-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .testimonial-pet {
+    font-size: 0.78rem;
+    color: var(--secondary-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 2px;
+    color: #f59e0b;
+    font-size: 0.9rem;
+  }
+
+  .quote-icon {
+    color: var(--primary-light);
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .testimonial-text {
+    font-size: 0.92rem;
+    color: var(--gray);
+    line-height: 1.75;
+    font-style: italic;
+  }
+</style>

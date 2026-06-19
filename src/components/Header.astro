@@ -1,0 +1,328 @@
+---
+const navLinks = [
+  { href: "/", label: "Início" },
+  { href: "/servicos", label: "Serviços" },
+  { href: "/sobre", label: "Sobre" },
+  { href: "/contato", label: "Contato" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="PetHappy - Página inicial">
+      <span class="logo-icon">
+        <i class="ph-fill ph-paw-print"></i>
+      </span>
+      <span class="logo-text">Pet<span class="logo-accent">Happy</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul class="nav-list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`nav-link ${currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)) ? "active" : ""}`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/5567999998888" target="_blank" class="whatsapp-btn" aria-label="WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+        <span>(67) 99999-8888</span>
+      </a>
+      <a href="/agendamento" class="btn btn-primary btn-sm">
+        <i class="ph ph-calendar-plus"></i>
+        Agendar
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav>
+      <ul class="mobile-nav-list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`mobile-nav-link ${currentPath === link.href ? "active" : ""}`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/agendamento" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+            <i class="ph ph-calendar-plus"></i>
+            Agendar agora
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow var(--transition);
+  }
+
+  .header.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 72px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--dark);
+  }
+
+  .logo-accent {
+    color: var(--primary);
+  }
+
+  .nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--dark-2);
+    transition:
+      color var(--transition),
+      background var(--transition);
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .nav-link.active {
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #25d366;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: opacity var(--transition);
+  }
+
+  .whatsapp-btn:hover {
+    opacity: 0.8;
+  }
+
+  .whatsapp-btn i {
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 16px 24px 24px;
+    transform: translateY(-8px);
+    opacity: 0;
+    transition:
+      transform var(--transition),
+      opacity var(--transition);
+    pointer-events: none;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    transition: background var(--transition);
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+
+  @media (max-width: 1024px) {
+    .whatsapp-btn span {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav,
+    .whatsapp-btn {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+
+    .header-actions .btn {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById("header");
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
+    }
+  });
+
+  hamburger?.addEventListener("click", () => {
+    const isOpen = hamburger.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", isOpen.toString());
+    mobileMenu?.classList.toggle("open", isOpen);
+    mobileMenu?.setAttribute("aria-hidden", (!isOpen).toString());
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger?.classList.remove("open");
+      mobileMenu?.classList.remove("open");
+    });
+  });
+</script>

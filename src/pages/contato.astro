@@ -1,0 +1,675 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const contatos = [
+  {
+    icon: "ph-map-pin",
+    titulo: "Endereço",
+    linhas: ["Rua das Flores, 123", "Jardim dos Estados", "Campo Grande, MS — 79020-010"],
+    link: null,
+    color: "var(--primary)",
+    bg: "var(--primary-light)",
+  },
+  {
+    icon: "ph-phone",
+    titulo: "Telefone",
+    linhas: ["(67) 3333-4444"],
+    link: "tel:6733334444",
+    color: "var(--secondary-dark)",
+    bg: "var(--secondary-light)",
+  },
+  {
+    icon: "ph-whatsapp-logo",
+    titulo: "WhatsApp",
+    linhas: ["(67) 99999-8888"],
+    link: "https://wa.me/5567999998888",
+    color: "#25d366",
+    bg: "#e8f9ee",
+  },
+  {
+    icon: "ph-envelope",
+    titulo: "Email",
+    linhas: ["contato@pethappy.com.br"],
+    link: "mailto:contato@pethappy.com.br",
+    color: "#7c3aed",
+    bg: "#f3e8ff",
+  },
+];
+
+const horarios = [
+  { dia: "Segunda – Sexta", hora: "08:00 às 18:00", aberto: true },
+  { dia: "Sábado", hora: "08:00 às 14:00", aberto: true },
+  { dia: "Domingo", hora: "Fechado", aberto: false },
+  { dia: "Feriados", hora: "Consulte-nos", aberto: null },
+];
+
+const services = [
+  "Banho e Tosa",
+  "Banho Simples",
+  "Tosa Higiênica",
+  "Tosa na Raça",
+  "Consulta Veterinária",
+  "Hotel Pet",
+  "Adestramento",
+  "Outro",
+];
+---
+
+<Layout
+  title="Contato — PetHappy Campo Grande"
+  description="Entre em contato com o PetHappy. Telefone, WhatsApp, email e endereço em Campo Grande, MS. Atendemos seg-sex 8h-18h, sáb 8h-14h."
+>
+  <section class="page-hero contato-hero">
+    <div class="container page-hero-inner">
+      <div class="breadcrumb fade-in">
+        <a href="/">Início</a>
+        <i class="ph ph-caret-right"></i>
+        <span>Contato</span>
+      </div>
+      <h1 class="page-hero-title fade-in">
+        Fale com a <span>PetHappy</span>
+      </h1>
+      <p class="page-hero-subtitle fade-in">
+        Estamos aqui para responder suas dúvidas e ajudar a marcar o horário
+        perfeito para o seu pet.
+      </p>
+    </div>
+    <div class="page-hero-wave">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 80L80 68C160 56 320 32 480 24C640 16 800 24 960 32C1120 40 1280 48 1360 52L1440 56V80H1360C1280 80 1120 80 960 80C800 80 640 80 480 80C320 80 160 80 80 80H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contato-grid">
+      <div class="contato-form-col fade-in">
+        <div class="form-card">
+          <div class="form-header">
+            <h2>Envie uma mensagem</h2>
+            <p>Respondemos em até 2 horas no horário de atendimento.</p>
+          </div>
+
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome completo <span class="required">*</span></label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefone">Telefone / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(67) 99999-0000" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="servico">Serviço de interesse</label>
+                <select id="servico" name="servico">
+                  <option value="">Selecione um serviço</option>
+                  {services.map((s) => (
+                    <option value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pet_nome">Nome do pet</label>
+                <input type="text" id="pet_nome" name="pet_nome" placeholder="Ex: Thor" />
+              </div>
+              <div class="form-group">
+                <label for="pet_especie">Espécie do pet</label>
+                <select id="pet_especie" name="pet_especie">
+                  <option value="">Selecione</option>
+                  <option>Cachorro</option>
+                  <option>Gato</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem <span class="required">*</span></label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Como podemos ajudar você e seu pet?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg submit-btn" id="submitBtn">
+              <i class="ph ph-paper-plane-tilt"></i>
+              <span class="btn-text">Enviar mensagem</span>
+              <span class="btn-loading" style="display:none;">
+                <span class="spinner"></span>
+                Enviando...
+              </span>
+            </button>
+          </form>
+
+          <div id="successMsg" class="success-msg" style="display:none;">
+            <div class="success-icon"><i class="ph-fill ph-check-circle"></i></div>
+            <h3>Mensagem enviada!</h3>
+            <p>Obrigado pelo contato. Retornaremos em breve, ou se preferir entre em contato pelo WhatsApp para resposta mais rápida.</p>
+            <a href="https://wa.me/5567999998888" target="_blank" class="btn btn-teal" style="margin-top: 16px;">
+              <i class="ph-fill ph-whatsapp-logo"></i>
+              Abrir WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contato-info-col">
+        <div class="contato-cards">
+          {contatos.map((c) => (
+            <div class="contato-card fade-in" style={`--c-color: ${c.color}; --c-bg: ${c.bg};`}>
+              <div class="contato-card-icon">
+                <i class={`ph-fill ${c.icon}`}></i>
+              </div>
+              <div>
+                <h4 class="contato-card-title">{c.titulo}</h4>
+                {c.linhas.map((l) => (
+                  c.link
+                    ? <a href={c.link} target={c.link.startsWith("http") ? "_blank" : "_self"} class="contato-card-line">{l}</a>
+                    : <p class="contato-card-line">{l}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="horarios-card fade-in">
+          <div class="horarios-header">
+            <i class="ph-fill ph-clock"></i>
+            <h3>Horário de Atendimento</h3>
+          </div>
+          {horarios.map((h) => (
+            <div class="horario-row">
+              <span class="horario-dia">{h.dia}</span>
+              <span class={`horario-hora ${!h.aberto ? "fechado" : ""}`}>{h.hora}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="map-card fade-in">
+          <div class="map-header">
+            <i class="ph-fill ph-map-pin"></i>
+            <h3>Nossa Localização</h3>
+          </div>
+          <div class="map-placeholder">
+            <div class="map-overlay">
+              <div class="map-pin-icon">
+                <i class="ph-fill ph-map-pin"></i>
+              </div>
+              <p class="map-address">Rua das Flores, 123</p>
+              <p class="map-neighborhood">Jardim dos Estados, Campo Grande - MS</p>
+              <a
+                href="https://www.google.com/maps/search/Jardim+dos+Estados+Campo+Grande+MS"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-primary btn-sm"
+                style="margin-top: 12px;"
+              >
+                <i class="ph ph-map-trifold"></i>
+                Ver no Google Maps
+              </a>
+            </div>
+            <div class="map-grid">
+              {Array.from({ length: 48 }).map(() => <div class="map-cell"></div>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contato-hero {
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  }
+
+  .page-hero {
+    padding: 80px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .page-hero-inner {
+    text-align: center;
+    padding-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+  }
+
+  .breadcrumb a { color: rgba(255,255,255,0.75); }
+
+  .page-hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .page-hero-title span { color: var(--accent); }
+
+  .page-hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .page-hero-wave {
+    line-height: 0;
+    margin-bottom: -2px;
+  }
+
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .form-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .form-header {
+    margin-bottom: 32px;
+  }
+
+  .form-header h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .form-header p {
+    color: var(--gray);
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .required {
+    color: var(--primary);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 16px;
+    border: 2px solid var(--gray-light);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--dark);
+    background: var(--light);
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    position: relative;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .success-msg {
+    text-align: center;
+    padding: 32px;
+  }
+
+  .success-icon {
+    font-size: 4rem;
+    color: #22c55e;
+    margin-bottom: 16px;
+  }
+
+  .success-msg h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .success-msg p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .contato-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .contato-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .contato-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contato-card-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--c-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-color);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .contato-card-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .contato-card-line {
+    font-size: 0.92rem;
+    color: var(--dark);
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  a.contato-card-line:hover {
+    color: var(--primary);
+  }
+
+  .horarios-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .horarios-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--secondary-dark);
+  }
+
+  .horarios-header i {
+    font-size: 1.3rem;
+  }
+
+  .horarios-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .horario-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-light);
+    font-size: 0.88rem;
+  }
+
+  .horario-row:last-child {
+    border-bottom: none;
+  }
+
+  .horario-dia {
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  .horario-hora {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--secondary-dark);
+    background: var(--secondary-light);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+  }
+
+  .horario-hora.fechado {
+    color: #dc2626;
+    background: #fee2e2;
+  }
+
+  .map-card {
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .map-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 24px;
+    color: var(--primary);
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .map-header i {
+    font-size: 1.3rem;
+  }
+
+  .map-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .map-placeholder {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 100%;
+    opacity: 0.07;
+  }
+
+  .map-cell {
+    border: 1px solid var(--dark);
+  }
+
+  .map-cell:nth-child(3n) {
+    background: var(--secondary-light);
+  }
+
+  .map-cell:nth-child(7n) {
+    background: var(--gray-light);
+  }
+
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .map-pin-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    box-shadow: 0 0 0 8px rgba(255,107,107,0.15);
+  }
+
+  .map-address {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 0.95rem;
+  }
+
+  .map-neighborhood {
+    font-size: 0.82rem;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 960px) {
+    .contato-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .form-card {
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
+  const successMsg = document.getElementById("successMsg") as HTMLDivElement;
+  const btnText = submitBtn?.querySelector(".btn-text") as HTMLSpanElement;
+  const btnLoading = submitBtn?.querySelector(".btn-loading") as HTMLSpanElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    btnText.style.display = "none";
+    btnLoading.style.display = "inline-flex";
+    submitBtn.disabled = true;
+
+    await new Promise((r) => setTimeout(r, 1800));
+
+    form.style.display = "none";
+    successMsg.style.display = "block";
+  });
+
+  const phoneInput = document.getElementById("telefone") as HTMLInputElement;
+  phoneInput?.addEventListener("input", (e) => {
+    let val = (e.target as HTMLInputElement).value.replace(/\D/g, "");
+    if (val.length <= 11) {
+      val = val.replace(/^(\d{2})(\d)/, "($1) $2");
+      val = val.replace(/(\d{5})(\d{4})$/, "$1-$2");
+    }
+    (e.target as HTMLInputElement).value = val;
+  });
+</script>
